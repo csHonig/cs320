@@ -21,6 +21,7 @@ class Spec extends SpecBase {
   test(compose(addN(3), addN(4))(11), 18)
 
   test(double(List(1, 2, 3)), List(2, 4, 6))
+  test(double(List(1,4,8)), List(2,8,16))
   test(double(double(List(1, 2, 3, 4, 5))), List(4, 8, 12, 16, 20))
 
   test(sum(List(1, 2, 3)), 6)
@@ -33,12 +34,14 @@ class Spec extends SpecBase {
 
   val t1: Tree = Branch(Leaf(1), 2, Leaf(3))
   val t2: Tree = Branch(Leaf(1), 2, Branch(Leaf(3), 4, Leaf(5)))
+  val t3: Tree = Branch( Branch(Leaf(1), 2, Leaf(3)), 4, Branch(Leaf(5), 6, Leaf(7)))
 
   test(countLeaves(t1), 2)
   test(countLeaves(t2), 3)
 
   test(flatten(t1), List(1, 2, 3))
   test(flatten(t2), List(1, 2, 3, 4, 5))
+  test(flatten(t3), List(1, 2, 3, 4, 5, 6, 7))
 
   /* Write your own tests */
 }
